@@ -12,4 +12,4 @@ while s == True:
         s = False
 
     except:
-        print("Ingresar un NUMERO de 3 DIGITOS")
+        print("Ingresar un NUMERO de 3 DIGITOS") 
