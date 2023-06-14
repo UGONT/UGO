@@ -55,15 +55,21 @@ matrizz(NumFaenas,NumDias)
 dias()
 agregar(NumFaenas,NumDias)
 
-matr = np.array(lista2)
-matriz = np.array(lista1)
-matriz2 = matriz.reshape(NumFaenas,NumDias)
+arreglo_lista2 = np.array(lista2)
+arreglo_lista1 = np.array(lista1)
+matriz_pro = arreglo_lista1.reshape(NumFaenas,NumDias)
 
 
-NumDia(matr)
-PlanProd(matriz2)
+NumDia(arreglo_lista2)
+PlanProd(matriz_pro)
 
+num_faena = int(input("Ingrese numero de faena a calcular: "))
+prod_faena = np.sum(matriz_pro[(num_faena-1),:])
+print(prod_faena)
 
+num_dia = int(input("Ingrese numero del dia a calcular: "))
+prod_dia = np.sum(matriz_pro[:,(num_dia-1)])
+print(prod_dia)
 
 
 
