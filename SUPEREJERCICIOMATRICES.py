@@ -20,9 +20,9 @@ def Agregar_produccion(NumFaenas,NumDias):#agregar dato en matriz lista
         lista1[i] = tonelada
     return lista1
 
-def NumDia(matr):#dias enumeracion
+def NumDia(arreglo_lista2):#dias enumeracion
     print("Dias       ",end=" ")
-    for fila in matr:
+    for fila in arreglo_lista2:
         print(fila, end="   ")
     print()
     return NumDia
@@ -40,6 +40,11 @@ def PlanProd(matriz2):#matriz plan de produccion
 op = 0
 while op != 5:
     try:
+
+
+
+
+
         print("1.Generar plan de produccion")
         print("2.Ingresar datos de produccion")
         print("3.Calcular produccion total de una faena especifica")
@@ -72,23 +77,24 @@ while op != 5:
             PlanProd(matriz_pro)
 
         elif op == 3:
+            arreglo_lista2 = np.array(lista2)
+            arreglo_lista1 = np.array(lista1)
+            matriz_pro = arreglo_lista1.reshape(NumFaenas,NumDias)
+
+
             print("---Calcular produccion total de una faena especifica---")
-            suma = int(input("Ingrese numero de faena a calcular: "))
+            num_faena = int(input("Ingrese numero de faena a calcular: "))
+            prod_faena = np.sum(matriz_pro[(num_faena-1),:])
+            print(prod_faena)
             
-
-
-
-
-
-
-
-
         elif op == 4:
+
+
+
             print("---Calcular produccion total de todas las faenas en un dia especifico---")
-
-
-
-
+            num_dia = int(input("Ingrese numero del dia a calcular: "))
+            prod_dia = np.sum(matriz_pro[:,(num_dia-1)])
+            print(prod_dia)
 
         elif op == 5:
             print("---Salir del programa---")
