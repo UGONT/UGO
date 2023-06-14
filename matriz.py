@@ -1,5 +1,5 @@
 import numpy as np
-import random as rd
+
 
 lista = []
 lista2 = []#Numeros dias
@@ -27,26 +27,17 @@ matr = np.array(lista2)
 matriz = np.array(lista)
 matriz2 = matriz.reshape(NumFaenas,NumDias)
 
-#matriz enumerada
+#dias enumeracion
+print("Dias       ",end=" ")
 for fila in matr:
     print(fila, end="   ")
 print()
 
 #matriz plan de produccion
+n = 1
 for fila in matriz2:
-    print(f"Faena  ")
+    print(f"Faena N°{n} ",end="  ")
+    n += 1
     for elemento in fila:
         print(elemento, end="  ")
     print()
-
-lista.append(rd.randint(0,50))
-
-'''
-matrix = [[1,2,3],
-          [4,5,6],
-          [7,8,9]]
-for fila in matrix:
-    for elemento in fila:
-        print(elemento, end=" ")
-    print()
-'''
