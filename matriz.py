@@ -2,9 +2,7 @@ import numpy as np
 
 lista1 = []#matriz toneladas
 lista2 = []#dias
-matr = None
-matriz = ""
-matriz2 = ""
+
 
 def matrizz(NumFaenas,NumDias):#matriz plan de produccion
     
@@ -24,17 +22,9 @@ def agregar(NumFaenas,NumDias):#agregar dato en matriz lista
         lista1[i] = tonelada
     return lista1
 
-def Lista2_arreglo(lista2):
-    matr = np.array(lista2)
-    return matr
 
-def Lista1_arreglo(lista1):
-    matriz = np.array(lista1)
-    return matriz
 
-def Matriz_Toneladas(matriz):
-    matriz2 = matriz.reshape(NumFaenas,NumDias)
-    return matriz2
+
 
 
 
@@ -64,10 +54,10 @@ NumDias = int(input("Ingrese numero de dias: "))
 matrizz(NumFaenas,NumDias)
 dias()
 agregar(NumFaenas,NumDias)
-Lista2_arreglo(lista2)
-Lista1_arreglo(lista1)
-Matriz_Toneladas(matriz)
 
+matr = np.array(lista2)
+matriz = np.array(lista1)
+matriz2 = matriz.reshape(NumFaenas,NumDias)
 
 
 NumDia(matr)
