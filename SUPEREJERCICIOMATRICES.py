@@ -81,15 +81,15 @@ while op != 5:
             arreglo_lista1 = np.array(lista1)
             matriz_pro = arreglo_lista1.reshape(NumFaenas,NumDias)
 
-
             print("---Calcular produccion total de una faena especifica---")
             num_faena = int(input("Ingrese numero de faena a calcular: "))
             prod_faena = np.sum(matriz_pro[(num_faena-1),:])
             print(prod_faena)
             
         elif op == 4:
-
-
+            arreglo_lista2 = np.array(lista2)
+            arreglo_lista1 = np.array(lista1)
+            matriz_pro = arreglo_lista1.reshape(NumFaenas,NumDias)
 
             print("---Calcular produccion total de todas las faenas en un dia especifico---")
             num_dia = int(input("Ingrese numero del dia a calcular: "))
