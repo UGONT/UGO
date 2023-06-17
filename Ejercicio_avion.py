@@ -1,4 +1,5 @@
 import numpy as np
+import random as rd
 
 lista_A = []
 lista_B = []
@@ -8,14 +9,6 @@ N = range(1,31)
 V = range(31,43)
 Duoc = False
 
-def datos_usuario():
-    nombre = input("Nombre pasajero: ")
-    rut = input("Rut pasajero: ")
-    telefono = input("Telefono pasajero: ")
-    banco = input("Banco pasajero: ")
-    return nombre,rut,telefono,banco
-
-
 #Agrega 30 asientos en lista A Nor
 for i in range(1,31):
     lista_A.append(i)
@@ -24,16 +17,20 @@ for i in range(1,31):
 for i in range(31,43):
     lista_B.append(i)
 
-selec_asiento = int(input("Seleccione un asiento\n->"))
-#Bloquear asiento
-while selec_asiento not in N and V:
-    print("Asiento fuera de rango\n->")
-    selec_asiento = int(input())
-    
-if selec_asiento in N:
-    lista_A[selec_asiento - 1] = "X"
-elif selec_asiento in V:
-    lista_B[selec_asiento - 31] = "X"
+#Bloquea 7 asientos aleatorios
+for i in range(8):
+    n = rd.randint(1,42)
+    if n in N:
+        lista_A[n-1] = "X"
+    elif n in V:
+        lista_B[n - 31] = "X"
+
+def datos_usuario():
+    nombre = input("Nombre pasajero: ")
+    rut = input("Rut pasajero: ")
+    telefono = int(input("Telefono pasajero: "))
+    banco = input("Banco pasajero: ")
+    return nombre,rut,telefono,banco
 
  #arreglo lista A creacion matriz
 arreglo_A = np.array(lista_A)
@@ -77,6 +74,11 @@ while opcion != 5:
 
 
         elif opcion == 2:
+            selec_asiento = int(input("Seleccione un asiento\n->"))
+            if selec_asiento in N:
+                lista_A[selec_asiento - 1] = "X"
+            elif selec_asiento in V:
+                lista_B[selec_asiento - 31] = "X"
             print()
 
 
