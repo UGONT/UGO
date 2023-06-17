@@ -40,11 +40,7 @@ def PlanProd(matriz2):#matriz plan de produccion
 op = 0
 while op != 5:
     try:
-
-
-
-
-
+        
         print("1.Generar plan de produccion")
         print("2.Ingresar datos de produccion")
         print("3.Calcular produccion total de una faena especifica")
