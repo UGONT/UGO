@@ -36,32 +36,23 @@ elif selec_asiento in V:
     lista_B[selec_asiento - 31] = "X"
 
  #arreglo lista A creacion matriz
-def matriz_1(lista_A):
-    arreglo_A = np.array(lista_A)
-    matriz_nor = arreglo_A.reshape(5,6)
-    return matriz_nor
-
-matriz_1(lista_A)
-
+arreglo_A = np.array(lista_A)
+matriz_nor = arreglo_A.reshape(5,6)
+  
 #arreglo lista B creacion matriz
-def matriz_2(lista_B):
-    arreglo_B = np.array(lista_B)
-    matriz_vip = arreglo_B.reshape(2,6)
-    return matriz_vip
-
-matriz_2(lista_B)
-
-
+arreglo_B = np.array(lista_B)
+matriz_vip = arreglo_B.reshape(2,6)
 
 #dibujo avion
-for fila in matriz_nor:#print(matriz_nor)
+for fila in matriz_nor:#Asientos normales
     print(end="| ")
     for columna in fila:     
         print(columna, end="\t")
     print()
+
 print("|-----------------     -------------------|")
 
-for fila in matriz_vip:#print(matriz_vip)
+for fila in matriz_vip:#Asientos VIP
     print(end="| ")
     for columna in fila:
         print(columna, end="\t")
