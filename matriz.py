@@ -55,8 +55,8 @@ matrizz(NumFaenas,NumDias)
 dias()
 agregar(NumFaenas,NumDias)
 
-arreglo_lista2 = np.array(lista2)
 arreglo_lista1 = np.array(lista1)
+arreglo_lista2 = np.array(lista2)
 matriz_pro = arreglo_lista1.reshape(NumFaenas,NumDias)
 
 
