@@ -75,7 +75,10 @@ while opcion != 5:
             print()
 
         elif opcion == 2:
-            
+
+            datos_usuario()
+
+
             selec_asiento = int(input("Seleccione un asiento\n->"))
             if selec_asiento in N:
                 if arreglo_A[selec_asiento - 1] == "X":
