@@ -17,7 +17,7 @@ for i in range(1,31):
 for i in range(31,43):
     lista_B.append(i)
 
-#Bloquea 7 asientos aleatorios
+#Bloquea 8 asientos aleatorios
 for i in range(8):
     n = rd.randint(1,42)
     if n in N:
@@ -40,20 +40,7 @@ matriz_nor = arreglo_A.reshape(5,6)
 arreglo_B = np.array(lista_B)
 matriz_vip = arreglo_B.reshape(2,6)
 
-#dibujo avion
-for fila in matriz_nor:#Asientos normales
-    print(end="| ")
-    for columna in fila:     
-        print(columna, end="\t")
-    print()
 
-print("|-----------------     -------------------|")
-
-for fila in matriz_vip:#Asientos VIP
-    print(end="| ")
-    for columna in fila:
-        print(columna, end="\t")
-    print()
 
 
 
@@ -68,21 +55,42 @@ while opcion != 5:
         print("4.Modificar datos de pasajero")
         print("5.Salir")
         opcion = int(input("Seleccione una opcion\n->"))
+        print()
         if opcion == 1:
+
+            
+            print("Asientos disponibles")
+            #dibujo avion
+            for fila in matriz_nor:#Asientos normales
+                print(end="| ")
+                for columna in fila:     
+                    print(columna, end="\t")
+                print()
+            print("|-----------------     -------------------|")
+            for fila in matriz_vip:#Asientos VIP
+                print(end="| ")
+                for columna in fila:
+                    print(columna, end="\t")
+                print()
             print()
-
-
 
         elif opcion == 2:
+            
             selec_asiento = int(input("Seleccione un asiento\n->"))
             if selec_asiento in N:
-                lista_A[selec_asiento - 1] = "X"
+                if arreglo_A[selec_asiento - 1] == "X":
+                    print(f"El asiento numero {selec_asiento} no se encuentra disponible")
+                else:
+                    arreglo_A[selec_asiento - 1] = "X"
             elif selec_asiento in V:
-                lista_B[selec_asiento - 31] = "X"
+                if arreglo_B[selec_asiento - 31] == "X":
+                    print(f"El asiento numero {selec_asiento} no se encuentra disponible")
+                else:
+                    arreglo_B[selec_asiento - 31] = "X"
+            else:
+                print("El numero de asiento ingresado esta fuera de rango")
             print()
-
-
-
+                
         elif opcion == 3:
             print()
 
