@@ -3,6 +3,8 @@ import random as rd
 
 lista_A = []
 lista_B = []
+lista_C = []
+
 asiento_normal = 78900
 asiento_vip = 240000
 N = range(1,31)
@@ -27,10 +29,11 @@ for i in range(8):
 
 def datos_usuario():
     nombre = input("Nombre pasajero: ")
-    rut = input("Rut pasajero: ")
+    rut = int(input("Rut (sin digito verificador) pasajero: "))
+    dig = input("Digito verififador: ")
     telefono = int(input("Telefono pasajero: "))
     banco = input("Banco pasajero: ")
-    return nombre,rut,telefono,banco
+    return nombre,rut,dig,telefono,banco
 
  #arreglo lista A creacion matriz
 arreglo_A = np.array(lista_A)
@@ -39,8 +42,6 @@ matriz_nor = arreglo_A.reshape(5,6)
 #arreglo lista B creacion matriz
 arreglo_B = np.array(lista_B)
 matriz_vip = arreglo_B.reshape(2,6)
-
-
 
 
 
@@ -77,7 +78,6 @@ while opcion != 5:
         elif opcion == 2:
 
             datos_usuario()
-
 
             selec_asiento = int(input("Seleccione un asiento\n->"))
             if selec_asiento in N:
