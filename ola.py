@@ -1,15 +1,14 @@
-s = True
-while s == True:
-    
-    try:
+import numpy as np
 
-        numero = input("Ingrese un numero: ")
-        lista = []
-        for i in numero:
-            lista.append(i)
-        num = int(lista[2]+lista[1]+lista[0])
-        print(num)
-        s = False
+lista = []
+num1 = int(input("Ingrese un numero entre 3 y 6: "))
+num2 = int(input("Ingrese un segundo numero entre 3 y 6: "))
 
-    except:
-        print("Ingresar un NUMERO de 3 DIGITOS") 
+while num1 < 3 or num2 > 6:
+    print("Debes ingresar 2 numeros entre 3 y 6")
+    num1 = int(input(""))
+    num2 = int(input(""))
+
+arreglo1 = np.zeros(lista)
+print(arreglo1)
+
