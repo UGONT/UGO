@@ -3,18 +3,7 @@ import numpy as np
 lista = []
 union = False
 
-'''
-def datos_persona(lista):
-    nif = int(input("Ingrese NIF: "))
-    lista.append(nif)
-    letra = input("Ingrese las 3 letras de su nif")
-    lista.append(letra)
-    nombre = input("Ingrese su nombre: ")
-    lista.append(nombre)
-    edad = int(input("Ingrese su edad: "))
-    lista.append(edad)
-    return lista
-'''
+
 def buscar(busqueda):
     print()
 
@@ -39,23 +28,21 @@ while opcion != 4:
             if edad < 15:
                 print("Debes ser mayor de 15 años")
             else:
-                nif = int(input("Ingrese los 8 numeros de su nif: "))
-                if nif > 99999999 or nif < 10000000:
+                nif = input("Ingrese los 8 numeros de su nif: ")
+                n = int(nif)
+                if len(nif) != 8:
                     print("Fuera de rango")
                 else:
-                    cont = 0
                     letrasnif = str(input("Ingrese 3 letras de su nif: "))
-                    for i in letrasnif:
-                        cont += 1
-                    if cont != 3:
+
+                    if len(letrasnif) != 3:
                         print("Nif no valido")
                     else:
-                        cont = 0
+                        
                         nombre = input("Ingrese su nombre: ")
-                        for i in nombre:
-                            cont += 1
-                        if cont > 8:
-                            print("Nombre no valido (max 8 caracteres)")
+                        
+                        if len(nombre) < 8:
+                            print("Nombre no valido (min 8 caracteres)")
                         else:
                             pertenece = int(input("Pertenece a la Union Europea?\n1.Si\n2.No\n->"))
                             if pertenece == 1:
@@ -71,8 +58,8 @@ while opcion != 4:
 
                                 letrasM = letrasnif.upper()
                                 lista.append(str(nif)+"-"+(letrasM))                        
-                                lista.append("Nombre: "+ nombre)
-                                lista.append("Edad: "+str(edad))
+                                lista.append(("Nombre: ")+ nombre)
+                                lista.append(("Edad: ")+str(edad))
                                 arreglo_lista1 = np.array(lista)
                                 print(arreglo_lista1)
                             else:
@@ -109,8 +96,11 @@ while opcion != 4:
             print("-----------------------------")
 
         elif opcion == 4:
-            print("SALIR")
-            print(f"Adios Don {arreglo_lista1[1]}")
+            
+            if lista == []:
+                print("Adios")
+            else:
+                print(f"Adios Don {arreglo_lista1[1]}")
 
         else:
             print("No ingreso ninguna opcion valida")    
