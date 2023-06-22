@@ -1,6 +1,9 @@
 import numpy as np
 
-lista = []
+datos = []
+base_datos = np.array(datos)
+
+
 union = False
 
 
@@ -47,27 +50,40 @@ while opcion != 4:
                             pertenece = int(input("Pertenece a la Union Europea?\n1.Si\n2.No\n->"))
                             if pertenece == 1:
                                 union = True
-                                letrasM = letrasnif.upper()
-                                lista.append(str(nif)+"-"+(letrasM))                        
-                                lista.append(nombre)
-                                lista.append(edad)
-                                arreglo_lista1 = np.array(lista)
-                                print(arreglo_lista1)
-
                             elif pertenece == 2:
-
-                                letrasM = letrasnif.upper()
-                                lista.append(str(nif)+"-"+(letrasM))                        
-                                lista.append(("Nombre: ")+ nombre)
-                                lista.append(("Edad: ")+str(edad))
-                                arreglo_lista1 = np.array(lista)
-                                print(arreglo_lista1)
+                                union = False
                             else:
                                 print("No seleccionaste ninguna opcion")
+                            lista = []
+                            letrasM = letrasnif.upper()
+                            lista.append(str(nif)+"-"+(letrasM))                        
+                            lista.append(nombre)
+                            lista.append(edad)
+                            arreglo_lista1 = np.array(lista)
+                            base_datos = np.concatenate((base_datos,arreglo_lista1))
                     
         elif opcion == 2:
             print("BUSCAR")
             busqueda = input("Ingrese NIF completo y con guion: ")
+            for fila in base_datos:
+                for columna in fila:
+                    if columna == busqueda:
+                        print("NIF ENCONTRADO")
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if arreglo_lista1[0] == busqueda:
                 print("NIF ENCONTRADO")
                 for i in arreglo_lista1:
@@ -78,7 +94,6 @@ while opcion != 4:
                 else:
                     print("No pertenece a la Union Europea")
             else:
-                
                 print("NIF no encontrado")
 
         elif opcion == 3:
@@ -101,7 +116,9 @@ while opcion != 4:
                 print("Adios")
             else:
                 print(f"Adios Don {arreglo_lista1[1]}")
-
+            n = len(base_datos)
+            matriz = base_datos.reshape(int(n/3),3)
+            print(matriz)
         else:
             print("No ingreso ninguna opcion valida")    
     except:
