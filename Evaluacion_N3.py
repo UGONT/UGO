@@ -3,16 +3,13 @@ import numpy as np
 datos = []
 base_datos = np.array(datos)
 
-
 union = False
-
 
 def buscar(busqueda):
     print()
 
 def certificado():
     print()
-
 
 #MENU
 opcion = 0
@@ -64,37 +61,19 @@ while opcion != 4:
                     
         elif opcion == 2:
             print("BUSCAR")
+            n = len(base_datos)
+            matriz = base_datos.reshape(int(n/3),3)
             busqueda = input("Ingrese NIF completo y con guion: ")
-            for fila in base_datos:
-                for columna in fila:
-                    if columna == busqueda:
-                        print("NIF ENCONTRADO")
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            if arreglo_lista1[0] == busqueda:
-                print("NIF ENCONTRADO")
-                for i in arreglo_lista1:
-                    print(i,end=" ")
-                print()
-                if union == True:
-                    print("Pertenece a la Union Europea")
+            for Nfila in range(int(n/3)):
+                if matriz[Nfila][0] == busqueda:
+                    bandera = True
                 else:
-                    print("No pertenece a la Union Europea")
+                    bandera = False
+            if bandera is True:
+                print("Rut encontrado")
             else:
-                print("NIF no encontrado")
+                print("No encontrado")
+            
 
         elif opcion == 3:
             print("IMPRIMIR CERTIFICADOS")
