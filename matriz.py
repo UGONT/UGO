@@ -1,122 +1,116 @@
+import numpy as np
 
-tradicional = 12000
-peperoni = 14000
-carnes = 17000
+lista = []
 
-diurno = False #20%
-vespertino = False #15%
-admin = False #5%
+# Funcion Validar edad
+def validar_edad(edad):
+    if edad > 15:
+        return True
+    else:
+        return False
 
-total_pagar = 0
-descuento_final = 0
+# Funcion Validar nombre
+def validar_nombre(nombre):
+    if len(nombre) >= 8 and nombre.isalpha():
+        return True
+    else:
+        return False
 
-cantidad_tradi = 0
-cantidad_pepe = 0
-cantidad_carnes = 0
+# Funcion Validar NIF    
+def validar_nif(nif):     
+    if len(nif) == 8 and nif.isdigit():
+        return True
+    else:
+        return False  
 
-total_tradi = 0
-total_pepe = 0
-total_carnes = 0
+# Funcion Validar digitos de NIF
+def validar_nif_dig(tres_dig):
+    if len(tres_dig) == 3 and tres_dig.isalnum():
+        return True
+    else:
+        return False    
+
+# Funcion Agregar datos en la lista
+def agregar_datos(lista,nif_completo,nombre,edad):
+    lista.append(nif_completo)
+    lista.append(nombre)
+    lista.append(edad)
+
+# Funcion Buscar NIF
+def buscar_nif(busqueda,matriz):
+    for fila in matriz:
+        if fila[0] == busqueda:
+            return True
+    return False
+    
 
 
-# MENU
 opcion = 0
 while opcion != 4:
-    try: 
-
-        print("1.Menu")
-        print("2.Pago")
-        print("3.Anular pedido")
+    try:
+        print("1.Grabar")
+        print("2.Buscar")
+        print("3.Imprimir certificados")
         print("4.Salir")
-        opcion = int(input("Seleccione una opcion: "))
-        if opcion == 1: 
-            print("MENU RAPID")
-            print(f"1.Pizza tradicional ${tradicional}")
-            print(f"2.Pizza peperoni ${peperoni}")
-            print(f"3.Pizza All carnes ${carnes}")
-            opcion_pizza = int(input("Seleccione tipo de pizza: "))
-            if opcion_pizza == 1:
-                print("Seleccionaste pizza tradicional")
-                cantidad_pizza = int(input("Ingrese cantidad de pizzas: "))
-                while cantidad_pizza <= 0:
-                    print("Numero fuera de rango")
-                    cantidad_pizza = int(input("Ingrese cantidad de pizzas: "))
-                total_pagar += tradicional * cantidad_pizza
-                total_tradi += tradicional * cantidad_pizza
-                cantidad_tradi += cantidad_pizza
+        opcion = int(input('Ingrese una opcion: '))
+        print()
+        if opcion == 1:
+            print("GRABAR")
+            edad = int(input("Ingrese su edad: ")) # EDAD
+            validar_edad(edad)
+            if validar_edad(edad) == True:
+                print("Edad correcta")
+                nombre = str(input("Ingrese su nombre (Minimo 8 caracteres): ")) # NOMBRE
+                validar_nombre(nombre)
+                if validar_nombre(nombre) == True:
+                    print("Nombre correcto")
+                    nif = input("Ingrese los 8 digitos de su nif: ") # NIF
+                    validar_nif(nif)
+                    if validar_nif(nif) == True:
+                        print("Nif correcto")
+                        tres_dig = input("Ingrese ultimos 3 dig/crtr de su nif: ") # DIGITOS NIF
+                        validar_nif_dig(tres_dig)
+                        if validar_nif_dig(tres_dig) == True:
+                            print("NIF ingresado correctamente")
+                            nif_completo = str(nif)+"-"+str(tres_dig.upper())
+                            agregar_datos(lista,nif_completo,nombre,edad)
+                            arreglo_1 = np.array(lista)
+                            n_filas = int(len(arreglo_1)/3)
+                            matriz = arreglo_1.reshape(n_filas,3)
 
-            elif opcion_pizza == 2:
-                print("Seleccionaste pizza peperoni")
-                cantidad_pizza = int(input("Ingrese cantidad de pizzas: "))
-                while cantidad_pizza <= 0:
-                    print("Numero fuera de rango")
-                    cantidad_pizza = int(input("Ingrese cantidad de pizzas: "))
-                total_pagar += peperoni * cantidad_pizza
-                total_pepe += peperoni * cantidad_pizza
-                cantidad_pepe += cantidad_pizza
-            
-            elif opcion_pizza == 3:
-                print("Seleccionaste pizza All carnes")
-                cantidad_pizza = int(input("Ingrese cantidad de pizzas: "))
-                while cantidad_pizza <= 0:
-                    print("Numero fuera de rango")
-                    cantidad_pizza = int(input("Ingrese cantidad de pizzas: "))
-                total_pagar += carnes * cantidad_pizza
-                total_carnes += carnes * cantidad_pizza
-                cantidad_carnes += cantidad_pizza
-            
+
+
+
+
+                        else:
+                            print("Nif incorrecto\nRecordar;\n\t1.No se admiten simbolos\n\t2.Tamaño obligatorio 3 dig/crtr")
+                    else:
+                        print("Nif incorrecto\nRecordar;\n\t1.Solo se permiten numeros\n\t2.Tamaño de Nif debe ser solo 8 dig")
+                else:
+                    print("Nombre incorrecto\nRecordad;\n\t1.Minimo 8 caracteres\n\t2.Solo se admiten caracteres del alfabeto")
             else:
-                print("No seleccionaste ninguna pizza caezon")
+                print("Debes ser mayor de 15 años")
 
         elif opcion == 2:
-            print("PAGO")
-
-            print("1.diurno")
-            print("2.vespertino")
-            print("3.admin")
-            descuento = int(input("Ingresa segun tu caso: "))
-            if descuento == 1:
-                descuento_final += total_pagar * 0.20
-            elif descuento == 2:
-                descuento_final += total_pagar * 0.15
-            elif descuento == 3:
-                descuento_final +=  total_pagar * 0.05
-
-            print("Pizza duoc")
-            print("----------------------------")
-            print(f"{cantidad_tradi} pizza tradicional ${total_tradi}")
-            print(f"{cantidad_pepe} pizza peperoni ${total_pepe}")
-            print(f"{cantidad_carnes} pizza All carnes ${total_carnes}")
-            print("----------------------------")
-            print(f"Subtotal            ${total_pagar}")
-            print(f"Descuento           ${descuento_final}")
-            print("----------------------------")
-            print(f"Total a pagar        ${total_pagar - descuento_final}")
-            opcion = 4
+            print("BUSCAR")
+            if lista != []:
+                busqueda = input("Ingrese nif a buscar: ")
+                buscar_nif(busqueda,matriz)
+                if buscar_nif(busqueda,matriz) == True:
+                    print("Nif encontrado")
+                    print()
+                else:
+                    print("Nif NO ENCONTRADO")
+            else:
+                print("No se ha agregado ningun dato")
 
         elif opcion == 3:
-            print("ANULAR PEDIDO")
-
-            total_pagar = 0
-
-            cantidad_tradi = 0
-            cantidad_pepe = 0
-            cantidad_carnes = 0
-
-            total_tradi = 0
-            total_pepe = 0
-            total_carnes = 0
-
+            print("IMPRIMIR")
         elif opcion == 4:
             print("SALIR")
-
-        else:
-            print("Debes ingresar una opcion valida")
-
     except:
-        print("Debes ingresar un numero")  
-
-        
+        print("--ERROR--\nPosible causa de error:\n\t1.Ingreso de caracter en seleccion de opcion")    
+        print()
 
     
 
