@@ -17,7 +17,7 @@ print(f"El arreglo es de largo {len(arreglo)}")
 # Stop Indica hasta donde va consultar
 # Step Indica de cuanto en cuanto va a contar
 
-print(arreglo[::])
+print(arreglo[0::])
 
 #Rellenar arreglos
 # for 
