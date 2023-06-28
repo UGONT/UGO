@@ -23,8 +23,8 @@ def pertenece(eu):
 def certificado(busqueda,matriz):
     for fila in matriz:
         if fila[0] == busqueda:
-            print(fila)
-    return False
+            return fila
+    
     
 
 op = 0
@@ -52,9 +52,24 @@ while op != 4:
 
 
     elif op == 2:
-        print("Mostrar matriz")
-        busqueda = input("Ingrese nif para imprimir su certificado: ")
-        certificado(busqueda,matriz)
+        print("certificado")
+        if lista != []:
+            busqueda = input("Ingrese nif para imprimir su certificado: ")
+            
+            if buscar_nif(busqueda,matriz) == True:
+                
+                print(f"Nombre: {certificado(busqueda,matriz)[1]}")
+                print(f"NIF: {certificado(busqueda,matriz)[0]}")
+                print(f"Edad: {certificado(busqueda,matriz)[2]}")
+                print(f"EU: {certificado(busqueda,matriz)[3]}")
+                print(f"Estado conyugal: {certificado(busqueda,matriz)[0]}")
+            else:
+                print("Nif NO ENCONTRADO")
+        else:
+            print("No se ha agregado ningun dato")
+
+        
+        
         
         
 
